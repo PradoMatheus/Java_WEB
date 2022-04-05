@@ -1,0 +1,76 @@
+body {
+    margin-top: 0%;
+}
+
+.content {
+    height: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+th h1 {
+    font-family: Arial;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+td.name_sheets {
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: initial;
+}
+
+td input,
+td textarea {
+    border-radius: 8px;
+}
+
+td input::-webkit-input-placeholder,
+td textarea::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+.list_buttons {
+    margin-top: 5px;
+}
+
+td input[type="submit"] {
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 15px;
+    width: 120px;
+    height: 2.5em;
+}
+
+td input[type="reset"] {
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 15px;
+    width: 70px;
+    height: 2.5em;
+}
+
+input#btnSalvar {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+
+input#btnExcluir {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
