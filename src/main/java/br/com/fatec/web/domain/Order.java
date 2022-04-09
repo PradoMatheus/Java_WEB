@@ -1,5 +1,6 @@
 package br.com.fatec.web.domain;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order implements IDominio {
@@ -9,6 +10,7 @@ public class Order implements IDominio {
     private List<Order_Item> order_items;
     private Double total_value;
     private Payment payment;
+    private LocalDateTime date_order;
 
     @Override
     public int getId() {
@@ -57,5 +59,13 @@ public class Order implements IDominio {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public LocalDateTime getDate_order() {
+        return date_order;
+    }
+
+    public void setDate_order(LocalDateTime date_order) {
+        this.date_order = date_order;
     }
 }

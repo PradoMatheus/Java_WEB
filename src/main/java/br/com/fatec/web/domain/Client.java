@@ -4,7 +4,7 @@ public class Client implements IDominio {
     private int id;
     private String name;
     private String email;
-    private int cellphone;
+    private Long cellphone;
     private int number_house;
     private Long cpf;
     private String address;
@@ -46,11 +46,11 @@ public class Client implements IDominio {
         this.cpf = cpf;
     }
 
-    public int getCellphone() {
+    public Long getCellphone() {
         return cellphone;
     }
 
-    public void setCellphone(int cellphone) {
+    public void setCellphone(Long cellphone) {
         this.cellphone = cellphone;
     }
 

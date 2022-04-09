@@ -14,7 +14,16 @@ import java.util.List;
 public class CategoryVh implements IViewHelper {
     @Override
     public IDominio getDominio(HttpServletRequest req) {
+        String operation = req.getParameter("operation");
         Category category = new Category();
+
+        if (operation.equals("save")) {
+
+            category.setId(Integer.parseInt(req.getParameter("txtCod").trim()));
+            category.setName(req.getParameter("txtName"));
+            category.setObservation(req.getParameter("txtObs"));
+        }
+
         return category;
     }
 
@@ -24,7 +33,7 @@ public class CategoryVh implements IViewHelper {
 
         if (operation.equals("save")) {
             try {
-                req.getRequestDispatcher("category.jsp").forward(req, resp);
+                req.getRequestDispatcher("category?operation=list").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {

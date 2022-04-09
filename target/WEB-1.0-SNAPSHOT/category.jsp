@@ -9,7 +9,7 @@
 <% if (request.getAttribute("category") != null) {
     Category category = (Category) request.getAttribute("category");
 }%>
-<form method="get" action="category">
+<form method="post" action="category">
     <div class="container mt-5">
         <div class="fs-2 fw-bold text-center">
             Cadastro de Categoria
@@ -17,19 +17,21 @@
         <div class="form-group row m-1">
             <label class="col-sm-2 col-form-label" for="txtCod">C&oacute;digo:</label>
             <div class="col-sm-1">
-                <input type="text" class="form-control text-center" id="txtCod" value="0" readonly>
+                <input type="text" class="form-control text-center" id="txtCod" name="txtCod" value="0" readonly>
             </div>
         </div>
         <div class="form-group row m-1">
             <label class="col-sm-2 col-form-label" for="txtName">Nome:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="txtName" placeholder="Digite o nome da categoria" required="required">
+                <input type="text" class="form-control" id="txtName" name="txtName"
+                       placeholder="Digite o nome da categoria"
+                       required="required">
             </div>
         </div>
         <div class="form-group row m-1">
             <label class="col-sm-2 col-form-label" for="txtObs">Observa&ccedil;&atilde;o:</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="txtObs" rows="3" placeholder="..."></textarea>
+                <textarea class="form-control" id="txtObs" name="txtObs" rows="3" placeholder="..."></textarea>
             </div>
         </div>
         <%@ include file="components/buttons.jsp" %>

@@ -11,7 +11,7 @@
                     <a class="nav-link" href="./category?operation=list">Categoria</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product_list.jsp">Produto</a>
+                    <a class="nav-link" href="./product?operation=list">Produto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./client?operation=list">Cliente</a>
@@ -23,7 +23,7 @@
                     <a class="nav-link" href="./role?operation=list">Cargo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="order_list.jsp">Pedido</a>
+                    <a class="nav-link" href="./order?operation=list">Pedido</a>
                 </li>
             </ul>
         </div>

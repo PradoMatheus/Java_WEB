@@ -1,3 +1,4 @@
+<%@ page import="br.com.fatec.web.domain.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <title>Cadastros de Produto</title>
@@ -5,6 +6,9 @@
 </head>
 <body>
 <%@ include file="components/navbar.jsp" %>
+<% if (request.getAttribute("product") != null) {
+    Product product = (Product) request.getAttribute("product");
+}%>
 <form method="post" action="product">
     <div class="container mt-5">
         <div class="fs-2 fw-bold text-center">

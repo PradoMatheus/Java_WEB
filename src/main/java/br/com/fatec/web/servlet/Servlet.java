@@ -27,7 +27,7 @@ public class Servlet extends HttpServlet {
         mapVh.put("/WEB_war_exploded/order", new OrderVh());
         mapVh.put("/WEB_war_exploded/order_item", new Order_ItemVh());
         mapVh.put("/WEB_war_exploded/payment", new PaymentVh());
-        mapVh.put("/WEB_war_exploded/product", new PaymentVh());
+        mapVh.put("/WEB_war_exploded/product", new ProductVh());
         mapVh.put("/WEB_war_exploded/role", new RoleVh());
 
         mapCommand = new HashMap<String, ICommand>();
@@ -43,7 +43,7 @@ public class Servlet extends HttpServlet {
     }
 
     @Override
-        protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         execute(req, res);
     }
 

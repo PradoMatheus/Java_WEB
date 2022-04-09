@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductVh implements IViewHelper {
     @Override
@@ -18,12 +20,40 @@ public class ProductVh implements IViewHelper {
 
     @Override
     public void setDominio(HttpServletRequest req, HttpServletResponse resp, Result result) {
-        try {
-            req.getRequestDispatcher("category.jsp").forward(req, resp);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String operation = req.getParameter("operation");
+
+        if (operation.equals("save")) {
+            try {
+                req.getRequestDispatcher("product.jsp").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (operation.equals("list")) {
+            List<Product> productList = new ArrayList<Product>();
+            for (IDominio d : result.getDominioList()) {
+                productList.add((Product) d);
+            }
+            req.setAttribute("productList", productList);
+
+            try {
+                req.getRequestDispatcher("product_list.jsp").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (operation.equals("search")) {
+            req.setAttribute("product", (Product) result.getDominio());
+
+            try {
+                req.getRequestDispatcher("product.jsp").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
