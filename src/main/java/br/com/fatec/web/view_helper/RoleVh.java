@@ -1,6 +1,5 @@
 package br.com.fatec.web.view_helper;
 
-import br.com.fatec.web.domain.Category;
 import br.com.fatec.web.domain.IDominio;
 import br.com.fatec.web.domain.Role;
 import br.com.fatec.web.util.Result;
@@ -15,7 +14,16 @@ import java.util.List;
 public class RoleVh implements IViewHelper {
     @Override
     public IDominio getDominio(HttpServletRequest req) {
+        String operation = req.getParameter("operation");
         Role role = new Role();
+
+        if (operation.equals("save")) {
+            role.setId(Integer.parseInt(req.getParameter("txtCod").trim()));
+            role.setName(req.getParameter("txtName"));
+            role.setObservation(req.getParameter("txtObs"));
+            role.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
+        }
+
         return role;
     }
 
@@ -25,7 +33,7 @@ public class RoleVh implements IViewHelper {
 
         if (operation.equals("save")) {
             try {
-                req.getRequestDispatcher("role.jsp").forward(req, resp);
+                req.getRequestDispatcher("role?operation=list").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {

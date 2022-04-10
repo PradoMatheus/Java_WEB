@@ -2,6 +2,7 @@ package br.com.fatec.web.view_helper;
 
 import br.com.fatec.web.domain.Collaborator;
 import br.com.fatec.web.domain.IDominio;
+import br.com.fatec.web.domain.Role;
 import br.com.fatec.web.util.Result;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,23 @@ import java.util.List;
 public class CollaboratorVh implements IViewHelper {
     @Override
     public IDominio getDominio(HttpServletRequest req) {
+        String operation = req.getParameter("operation");
         Collaborator collaborator = new Collaborator();
+
+
+        if (operation.equals("save")) {
+            collaborator.setId(Integer.parseInt(req.getParameter("txtCod").trim()));
+            collaborator.setName(req.getParameter("txtName"));
+
+            Role role = new Role();
+            role.setId(Integer.parseInt(req.getParameter("txtJob").trim()));
+            collaborator.setRole(role);
+
+            collaborator.setEmail(req.getParameter("txtEmail"));
+            collaborator.setObservation(req.getParameter("txtObs"));
+            collaborator.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
+        }
+
         return collaborator;
     }
 
@@ -24,7 +41,7 @@ public class CollaboratorVh implements IViewHelper {
 
         if (operation.equals("save")) {
             try {
-                req.getRequestDispatcher("collaborator.jsp").forward(req, resp);
+                req.getRequestDispatcher("collaborator?operation=list").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {

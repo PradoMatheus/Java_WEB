@@ -1,5 +1,6 @@
 package br.com.fatec.web.view_helper;
 
+import br.com.fatec.web.domain.Category;
 import br.com.fatec.web.domain.IDominio;
 import br.com.fatec.web.domain.Product;
 import br.com.fatec.web.util.Result;
@@ -14,7 +15,23 @@ import java.util.List;
 public class ProductVh implements IViewHelper {
     @Override
     public IDominio getDominio(HttpServletRequest req) {
+        String operation = req.getParameter("operation");
         Product product = new Product();
+
+        if (operation.equals("save")) {
+            product.setId(Integer.parseInt(req.getParameter("txtCod").trim()));
+            product.setName(req.getParameter("txtName"));
+            product.setDescription(req.getParameter("txtDescription"));
+            product.setEan(req.getParameter("txtEAN"));
+
+            Category category = new Category();
+            category.setId(Integer.parseInt(req.getParameter("txtCategory")));
+            product.setCategory(category);
+
+            product.setValue(Double.parseDouble(req.getParameter("txtValue").replace(".", "").replace(",", ".")));
+            product.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
+        }
+
         return product;
     }
 
@@ -24,7 +41,7 @@ public class ProductVh implements IViewHelper {
 
         if (operation.equals("save")) {
             try {
-                req.getRequestDispatcher("product.jsp").forward(req, resp);
+                req.getRequestDispatcher("product?operation=list").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
