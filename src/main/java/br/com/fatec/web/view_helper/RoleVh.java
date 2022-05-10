@@ -22,6 +22,10 @@ public class RoleVh implements IViewHelper {
             role.setName(req.getParameter("txtName"));
             role.setObservation(req.getParameter("txtObs"));
             role.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
+        } else if (operation.equals("search")) {
+            role.setId(Integer.parseInt(req.getParameter("id")));
+        } else if (operation.equals("delete")) {
+            role.setId(Integer.parseInt(req.getParameter("txtCod")));
         }
 
         return role;
@@ -31,7 +35,7 @@ public class RoleVh implements IViewHelper {
     public void setDominio(HttpServletRequest req, HttpServletResponse resp, Result result) {
         String operation = req.getParameter("operation");
 
-        if (operation.equals("save")) {
+        if (operation.equals("save") || operation.equals("delete")) {
             try {
                 req.getRequestDispatcher("role?operation=list").forward(req, resp);
             } catch (ServletException e) {

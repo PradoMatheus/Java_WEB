@@ -36,7 +36,7 @@
                         out.print("<th style='width: 30%;vertical-align: middle;text-align: center'>" + role.getName() + "</th>");
                         out.print("<th style='width: 40%;vertical-align: middle;text-align: center'>" + role.getObservation() + "</th>");
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + role.isActive() + "</th>");
-                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./role?operation=search' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./role?operation=search&id=" + role.getId() + "' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

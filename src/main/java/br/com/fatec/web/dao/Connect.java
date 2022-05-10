@@ -12,7 +12,7 @@ public class Connect {
             String password = "123456";
             String database = "web";
 
-            Class.forName("org.postgresql.Drive");
+            DriverManager.registerDriver(new org.postgresql.Driver());
 
             return DriverManager.getConnection(
                     "jdbc:postgresql://" + server + "/" + database,

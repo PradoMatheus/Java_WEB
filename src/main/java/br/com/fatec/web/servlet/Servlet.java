@@ -1,6 +1,7 @@
 package br.com.fatec.web.servlet;
 
 import br.com.fatec.web.command.*;
+import br.com.fatec.web.dao.Connect;
 import br.com.fatec.web.domain.IDominio;
 import br.com.fatec.web.util.Result;
 import br.com.fatec.web.view_helper.*;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ import java.util.Map;
 public class Servlet extends HttpServlet {
     private Map<String, IViewHelper> mapVh;
     private Map<String, ICommand> mapCommand;
+    private Connect connect;
 
     public void init() {
         mapVh = new HashMap<>();
@@ -35,6 +38,9 @@ public class Servlet extends HttpServlet {
         mapCommand.put("delete", new DeleteCommand());
         mapCommand.put("list", new ListCommand());
         mapCommand.put("search", new SearchCommand());
+
+        Connection connection = connect.getConnection();
+        Connect.close(connection);
     }
 
     @Override

@@ -34,7 +34,7 @@
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + category.getId() + "</th>");
                         out.print("<th style='width: 30%;vertical-align: middle;text-align: center'>" + category.getName() + "</th>");
                         out.print("<th style='width: 50%;vertical-align: middle;text-align: center'>" + category.getObservation() + "</th>");
-                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./category?operation=search' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./category?operation=search&id=" + category.getId() + "' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

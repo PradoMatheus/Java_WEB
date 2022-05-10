@@ -30,6 +30,10 @@ public class ProductVh implements IViewHelper {
 
             product.setValue(Double.parseDouble(req.getParameter("txtValue").replace(".", "").replace(",", ".")));
             product.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
+        } else if (operation.equals("search")) {
+            product.setId(Integer.parseInt(req.getParameter("id")));
+        } else if (operation.equals("delete")) {
+            product.setId(Integer.parseInt(req.getParameter("txtCod")));
         }
 
         return product;
@@ -39,7 +43,7 @@ public class ProductVh implements IViewHelper {
     public void setDominio(HttpServletRequest req, HttpServletResponse resp, Result result) {
         String operation = req.getParameter("operation");
 
-        if (operation.equals("save")) {
+        if (operation.equals("save") || operation.equals("delete")) {
             try {
                 req.getRequestDispatcher("product?operation=list").forward(req, resp);
             } catch (ServletException e) {
