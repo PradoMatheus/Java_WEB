@@ -40,7 +40,7 @@
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + product.getEan() + "</th>");
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + product.getCategory().getName() + "</th>");
                         out.print("<th style='width: 5%;vertical-align: middle;text-align: center'>" + product.isActive() + "</th>");
-                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./product?operation=search&id=" + product.getId() + "' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./product?operation=search&id=" + product.getId() + "&type=normal' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

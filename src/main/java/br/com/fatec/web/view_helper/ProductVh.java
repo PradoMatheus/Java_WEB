@@ -4,6 +4,7 @@ import br.com.fatec.web.domain.Category;
 import br.com.fatec.web.domain.IDominio;
 import br.com.fatec.web.domain.Product;
 import br.com.fatec.web.util.Result;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,7 @@ public class ProductVh implements IViewHelper {
 
         if (operation.equals("save") || operation.equals("delete")) {
             try {
-                req.getRequestDispatcher("product?operation=list").forward(req, resp);
+                req.getRequestDispatcher("product?operation=list&type=normal").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -56,24 +57,52 @@ public class ProductVh implements IViewHelper {
             for (IDominio d : result.getDominioList()) {
                 productList.add((Product) d);
             }
-            req.setAttribute("productList", productList);
 
-            try {
-                req.getRequestDispatcher("product_list.jsp").forward(req, resp);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (req.getParameter("type").equals("gson")) {
+                String json = new Gson().toJson(result.getDominioList());
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                try {
+                    resp.getWriter().write(json);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            } else {
+                req.setAttribute("productList", productList);
+
+                try {
+                    req.getRequestDispatcher("product_list.jsp").forward(req, resp);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else if (operation.equals("search")) {
-            req.setAttribute("product", (Product) result.getDominio());
 
-            try {
-                req.getRequestDispatcher("product.jsp").forward(req, resp);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (req.getParameter("type").equals("gson")) {
+                String json = new Gson().toJson(result.getDominio());
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                try {
+                    resp.getWriter().write(json);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            } else {
+                req.setAttribute("product", (Product) result.getDominio());
+
+                try {
+                    req.getRequestDispatcher("product.jsp").forward(req, resp);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

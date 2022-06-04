@@ -38,7 +38,7 @@
                         out.print("<th style='width: 15%;vertical-align: middle;text-align: center'>" + order.getDate_order().format(formatter) + "</th>");
                         out.print("<th style='width: 40%;vertical-align: middle;text-align: center'>" + order.getClient().getName() + "</th>");
                         out.print("<th style='width: 25%;vertical-align: middle;text-align: center'>" + order.getTotal_value() + "</th>");
-                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./order?operation=search' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./order?operation=search&id=" + order.getId() + "' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

@@ -38,7 +38,7 @@
                         out.print("<th style='width: 15%;vertical-align: middle;text-align: center'>" + collaborator.getRole().getName() + "</th>");
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + collaborator.getEmail() + "</th>");
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + collaborator.isActive() + "</th>");
-                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./collaborator?operation=search' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 10%; text-align: center'><a class='btn btn-primary' href='./collaborator?operation=search&id=" + collaborator.getId() + "' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

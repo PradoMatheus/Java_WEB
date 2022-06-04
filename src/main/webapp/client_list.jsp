@@ -38,7 +38,7 @@
                         out.print("<th style='width: 15%;vertical-align: middle;text-align: center'>" + client.getCpf() + "</th>");
                         out.print("<th style='width: 20%;vertical-align: middle;text-align: center'>" + client.getEmail() + "</th>");
                         out.print("<th style='width: 10%;vertical-align: middle;text-align: center'>" + client.isActive() + "</th>");
-                        out.print("<th style='width: 20%; text-align: center'><a class='btn btn-primary' href='./client?operation=search' role='button'>Editar</a></th>");
+                        out.print("<th style='width: 20%; text-align: center'><a class='btn btn-primary' href='./client?operation=search&id=" + client.getId() + "' role='button'>Editar</a></th>");
                         out.print("</tr>");
                     }
                 } else {

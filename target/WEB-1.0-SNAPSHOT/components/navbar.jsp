@@ -11,16 +11,16 @@
                     <a class="nav-link" href="./category?operation=list&type=normal">Categoria</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./product?operation=list">Produto</a>
+                    <a class="nav-link" href="./product?operation=list&type=normal">Produto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./client?operation=list">Cliente</a>
+                    <a class="nav-link" href="./client?operation=list&type=normal">Cliente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./collaborator?operation=list">Colaborador</a>
+                    <a class="nav-link" href="./collaborator?operation=list&type=normal">Colaborador</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./role?operation=list">Cargo</a>
+                    <a class="nav-link" href="./role?operation=list&type=normal">Cargo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./order?operation=list">Pedido</a>

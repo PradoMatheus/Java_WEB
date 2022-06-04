@@ -78,19 +78,30 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
+            if (parseInt($("#txtCod").val()) > 0)
+                $("#btn_delete").prop("disabled", false);
+
             $.get("category?operation=list&type=gson", function (value) {
                 value.forEach(function (category) {
                     $("#txtCategory").append('<option value="' + category.id + '">' + category.name + '</option>')
                 })
             })
+
+            $.get("category?operation=list&type=gson", function (value) {
+                value.forEach(function (category) {
+                    <%if(product.getId() > 0){%>
+                    if (category.id == <%out.print(product.getCategory().getId());%>)
+                        $("#txtCategory").append('<option value="' + category.id + '" selected>' + category.name + '</option>')
+                    else
+                        $("#txtCategory").append('<option value="' + category.id + '">' + category.name + '</option>')
+                    <%}else {%>
+                    $("#txtCategory").append('<option value="' + category.id + '">' + category.name + '</option>')
+                    <%}%>
+                })
+            })
         })
     </script>
 </form>
-<script type="text/javascript">
-    $(document).ready(function () {
-        if (parseInt($("#txtCod").val()) > 0)
-            $("#btn_delete").prop("disabled", false);
-    })
 </script>
 <%@ include file="components/complements_js.jsp" %>
 <script src="js/product.js"></script>

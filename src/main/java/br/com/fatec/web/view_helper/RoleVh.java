@@ -3,6 +3,7 @@ package br.com.fatec.web.view_helper;
 import br.com.fatec.web.domain.IDominio;
 import br.com.fatec.web.domain.Role;
 import br.com.fatec.web.util.Result;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,7 @@ public class RoleVh implements IViewHelper {
 
         if (operation.equals("save") || operation.equals("delete")) {
             try {
-                req.getRequestDispatcher("role?operation=list").forward(req, resp);
+                req.getRequestDispatcher("role?operation=list&type=normal").forward(req, resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -48,14 +49,27 @@ public class RoleVh implements IViewHelper {
             for (IDominio d : result.getDominioList()) {
                 roleList.add((Role) d);
             }
-            req.setAttribute("roleList", roleList);
+            if (req.getParameter("type").equals("gson")) {
+                String json = new Gson().toJson(result.getDominioList());
 
-            try {
-                req.getRequestDispatcher("role_list.jsp").forward(req, resp);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                try {
+                    resp.getWriter().write(json);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            } else {
+                req.setAttribute("roleList", roleList);
+
+                try {
+                    req.getRequestDispatcher("role_list.jsp").forward(req, resp);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else if (operation.equals("search")) {
             req.setAttribute("role", (Role) result.getDominio());
