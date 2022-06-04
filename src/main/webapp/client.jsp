@@ -93,7 +93,7 @@
             <label class="col-sm-2 col-form-label" for="txtEnable">Ativo:</label>
             <div class="col-sm-10">
                 <input type="checkbox" class="form-check-input" id="txtEnable" name="txtEnable"
-                       checked="<%out.print(client.isActive());%>">
+                    <%if (client.isActive() == true) out.print("checked"); else out.print("");%>>
             </div>
         </div>
         <%@ include file="components/buttons.jsp" %>
