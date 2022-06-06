@@ -24,13 +24,14 @@ public class ClientVh implements IViewHelper {
             client.setName(req.getParameter("txtName"));
             client.setCpf(Long.parseLong(req.getParameter("txtCPF").replaceAll("[-+.^:,]", "").trim()));
             client.setEmail(req.getParameter("txtEmail"));
-            client.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
             client.setDistrict(req.getParameter("txtNeighborhood"));
             client.setAddress(req.getParameter("txtAddress"));
             client.setCity(req.getParameter("txtCity"));
             client.setZip(Integer.parseInt(req.getParameter("txtZIP").replaceAll("[-+.^:,]", "").trim()));
             client.setCellphone(Long.parseLong(req.getParameter("txtPhone").replaceAll("[-+.^:,()]", "").replace(" ", "").trim()));
             client.setNumber_house(Integer.parseInt(req.getParameter("txtNumber").trim()));
+            System.err.println(req.getParameter("txtEnable"));
+            client.setActive(Boolean.parseBoolean(req.getParameter("txtEnable")));
         } else if (operation.equals("search")) {
             client.setId(Integer.parseInt(req.getParameter("id").trim()));
         } else if (operation.equals("delete")) {

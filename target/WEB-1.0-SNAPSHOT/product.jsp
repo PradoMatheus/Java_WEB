@@ -70,14 +70,20 @@
         <div class="form-group row m-1">
             <label class="col-sm-2 col-form-label" for="txtEnable">Ativo:</label>
             <div class="col-sm-10">
-                <input type="checkbox" class="form-check-input" id="txtEnable" name="txtEnable"
+                <input type="checkbox" class="form-check-input" id="txtEnable" name="txtEnable" value=true
                     <%if (product.isActive() == true) out.print("checked"); else out.print("");%>>
             </div>
         </div>
         <%@ include file="components/buttons.jsp" %>
     </div>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function (event) {
+            $("#txtEnable").on("change", function (){
+                if (this.checked)
+                    console.log(true)
+                else
+                    console.log(false)
+            })
             if (parseInt($("#txtCod").val()) > 0)
                 $("#btn_delete").prop("disabled", false);
 
